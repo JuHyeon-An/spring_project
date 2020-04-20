@@ -19,10 +19,9 @@
 	<!-- controller (servlet code) -->
 	<bean id="brd_controller" class="controller.BoardController"/>
 	
-	
 	<!-- view resolver (결과 페이지)-->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="index.jsp?inc=./board/"/>
+		<property name="prefix" value="./board/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 </beans>

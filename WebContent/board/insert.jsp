@@ -3,6 +3,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="board">
 	<div id="header">게시물 입력</div>
-
+	<form name="frm_brd" id="frm_brd" method="post">
+	<!-- UI -->
+		<input type="button" id="btnRegister" value="저장"/>
+		<input type="button" id="btnFind" value="취소"/>
+		
+		<input type="text" name="findStr" value="${param.findStr }"/>
+		<input type="text" name="nowPage" value="${param.nowPage }"/>
+		<input type="text" name="serial" value="${param.serial }"/>
+	</form>
 
 </div>
+<script>
+brd.func();
+</script>
