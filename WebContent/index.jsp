@@ -3,70 +3,104 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Insert title here</title>
+    <title>Spring</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
-    />
-
-    <!-- 부가적인 테마 -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"
-    />
-
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style>
+      .fakeimg {
+        height: 200px;
+        background: #aaa;
+      }
+    </style>
   </head>
   <body>
-    <%@include file="header.jsp"%>
-    <div class="btn-group">
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-secondary dropdown-toggle"
-          data-toggle="dropdown"
-        >
-          게시판
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#" onclick="brd.init();">자유게시판</a>
-          <a class="dropdown-item" href="#">게시글등록</a>
-        </div>
+    <%@include file="header.jsp" %>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand" href="index.jsp">SPRING</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"cd 
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="brd.init();">자유게시판</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="btnInsert">게시글작성</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" onclick="mm.init();">회원조회</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">회원등록</a>
+          </li>
+        </ul>
       </div>
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-secondary dropdown-toggle"
-          data-toggle="dropdown"
-        >
-          회원관리
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="mm.init();">회원조회</a>
-          <a class="dropdown-item" href="#">회원등록</a>
+    </nav>
+
+    <div class="container" style="margin-top: 30px;" id="main">
+      <div class="row">
+        <div class="col-sm-4">
+          <h2>About Me</h2>
+          <h5>Photo of me:</h5>
+          <div class="fakeimg">Fake Image</div>
+          <p>안녕하세요....</p>
+          <h3>후원하기</h3>
+          <p>후원계좌를 선택하세요</p>
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <hr class="d-sm-none" />
+        </div>
+        <div class="col-sm-8">
+          <h2>TITLE HEADING</h2>
+          <h5>Title description, Dec 7, 2017</h5>
+          <div class="fakeimg">Fake Image</div>
+          <p>Some text..</p>
+          <p>
+            Sunt in culpa qui officia deserunt mollit anim id est laborum
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco.
+          </p>
+          <br />
+          <h2>TITLE HEADING</h2>
+          <h5>Title description, Sep 2, 2017</h5>
+          <div class="fakeimg">Fake Image</div>
+          <p>Some text..</p>
+          <p>
+            Sunt in culpa qui officia deserunt mollit anim id est laborum
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco.
+          </p>
         </div>
       </div>
     </div>
-    <hr />
 
-    <section class="section" id="main">
-      <div class="container">
-        <h1 class="title">Section</h1>
-        <h2 class="subtitle">
-          A simple container to divide your page into
-          <strong>sections</strong>, like the one you're currently reading
-        </h2>
-      </div>
-    </section>
-
-    <%@include file="footer.jsp"%>
-    <script src="./lib/jquery-3.4.1.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="./js/member.js"></script>
-    <script src="./js/index.js"></script>
+    <%@include file="footer.jsp" %>
   </body>
 </html>

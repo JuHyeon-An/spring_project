@@ -1,17 +1,21 @@
 package bean;
 
 public class Page {
+	int listSize=10; // 10개씩
+	int blockSize=5; // 게시판 페이지 몇번까지 표시할것인지
+
 	int totListSize; // 검색된 결과의 전체 건수
 	int totPage; // 토탈 페이지 수
-	int listSize=10; // 10개씩
+	
 	int nowPage=1; // 현재페이지
 	int startNo;
-	int blockSize=5; // 게시판 페이지 몇번까지 표시할것인지
 	int endNo;
 	int startPage;
 	int endPage;
+	
 	String findStr = "";
-	int search;
+	
+	int search = 3;
 	
 	public Page() {}
 	

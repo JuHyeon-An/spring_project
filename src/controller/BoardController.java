@@ -1,25 +1,43 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import bean.BoardMybatisDao;
 import bean.Page;
+import mybatis.AttVo;
+import mybatis.BoardVo;
 
 @Controller
 public class BoardController {
-
+	BoardMybatisDao dao;
+	
+	BoardController(BoardMybatisDao dao){
+		this.dao = dao;
+	}
+	
+	
 	ModelAndView mv;
 	@RequestMapping(value = "/select.brd", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView select() {
+	public ModelAndView select(HttpServletRequest req) {
 		mv = new ModelAndView();
-		List<Object> list = new ArrayList<Object>();
-		list.add("참 잘했어여~~~(board)");
-
+		
+		Page p = new Page();
+		p.setFindStr(req.getParameter("findStr"));
+		int nowPage = 1;
+		if(req.getParameter("nowPage")!=null && req.getParameter("nowPage")!="") {
+			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+		}
+		p.setNowPage(nowPage);
+		List<BoardVo> list = dao.select(p);
+		
+		mv.addObject("p", p);
 		mv.addObject("list", list);
 		//데이터를 심을때
 		// 이렇게 담으면 request영역에 담겨져서 나감
@@ -32,8 +50,27 @@ public class BoardController {
 	}
 	
 	@RequestMapping( value ="/view.brd", method= {RequestMethod.POST})
-	public ModelAndView view() {
+	public ModelAndView view(HttpServletRequest req) {
 		mv = new ModelAndView();
+		BoardVo vo = null;
+		List<AttVo> attList = null;
+		int serial = Integer.parseInt(req.getParameter("serial"));
+		String v = "v";
+		vo = dao.view(serial, v);
+		attList = dao.getAttList(serial);
+		
+		// 중복되는 부분 메소드로 따로 분기해도 됨
+		Page p = new Page();
+		p.setFindStr(req.getParameter("findStr"));
+		int nowPage = 1;
+		if(req.getParameter("nowPage")!=null && req.getParameter("nowPage")!="") {
+			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+		}
+		p.setNowPage(nowPage);
+		
+		mv.addObject("attList", attList);
+		mv.addObject("p", p);
+		mv.addObject("vo", vo);
 		mv.setViewName("view");
 		
 		return mv;

@@ -15,9 +15,13 @@
 	<context:annotation-config />
 	
 	<!-- bean -->
+	<bean id="brdDao" class="bean.BoardMybatisDao"/>
+	
 	
 	<!-- controller (servlet code) -->
-	<bean id="brd_controller" class="controller.BoardController"/>
+	<bean id="brd_controller" class="controller.BoardController">
+		<constructor-arg ref="brdDao"/>
+	</bean>
 	
 	<!-- view resolver (결과 페이지)-->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

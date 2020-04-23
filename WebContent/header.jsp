@@ -2,16 +2,8 @@
 pageEncoding="UTF-8"%>
 
 <body>
-  <section class="hero is-medium is-light is-bold">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          나의 봄날.....
-        </h1>
-        <h2 class="subtitle">
-          봄날, 그 두번째 이야기.
-        </h2>
-      </div>
+  <div class="jumbotron text-center" style="margin-bottom: 0;">
+      <h1>나의 봄...</h1>
+      <p>다시 찾아온 봄.. 그 두번째 이야기..</p>
     </div>
-  </section>
 </body>

@@ -1,43 +1,73 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<div id="member">
-	<div id="header">회원조회</div>
+<div id="member" class="container">
+	<div id="header" class="h3">회원조회</div>
 
 	<form name="frm_mm" id="frm_mm" method="post">
-		<input type="button" value="입력" id="btnInsert" />
-		<input type="text" name="findStr" value="${param.findStr }"/>
-		<input type="button" value="검색" id="btnFind" />
-		<input type="text" name="nowPage" value="${param.nowPage }"/>
-		<input type="text" name="serial" value="${param.serial }"/>
+		<div class="row">
+			<div class="col-md-3">
+			  <button class="btn btn-secondary" id="btnInsert">회원등록</button>
+			</div>
+			
+			<div class="col-md-5"></div>
+		  
+			<div class="input-group mb-3 col-md-3">
+			  <input
+				type="text"
+				class="form-control"
+				placeholder="회원명을 입력하세요"
+				aria-describedby="btnFind"
+				name="findStr"
+				value="${param.findStr}"
+			  />
+			  <div class="input-group-append">
+				  <button class="btn btn-secondary" type="button" id="btnFind">
+					  검색
+					</button>
+				</div>
+			</div>
+			</div>
 	</form>
 
-	<!-- title -->
-	<div class="title"></div>
-		<span class="no">NO</span>
-		<span class="subject">제목</span>
-		<span class="id">작성자</span>
-		<span class="mDate">작성일</span>
-		<span class="hit">조회수</span>
-	
 	<!-- list -->
-	<div class="list">
+	<div class="list row">
 		<c:forEach var="i" begin="1" end="10">
-			<div class="items" onclick="mm.view(${i})">
-				<span class="no">${i }</span>
-				<span class="subject">제목${i }</span>
-				<span class="id">작성자${i }</span>
-				<span class="mDate">작성일${i }</span>
-				<span class="hit">조회수${i }</span>
-			</div>
+			<div class="card text-center" style="width:270px; float: left; align-items: center;">
+				<img class="card-img-top mt-3" src="./images/queen.png" alt="Card image" style="width: 50%; height: 50%;">
+				<div class="card-body">
+				  <h5 class="card-title">이름${i}</h5>
+				  <p class="card-text">id${i}</p>
+				  <a href="#" class="btn btn-outline-secondary">See Profile</a>
+				</div>
+			  </div>
 		</c:forEach>
 	</div>
-	<div id="paging">
-		<input type="button" value="이전" onclick="mm.go(1)" />
-		<c:forEach var="i" begin="1" end="10">
-			<input type="button" value="${i }" onclick="mm.go(${i})" />
-		</c:forEach>
-		<input type="button" value="다음" onclick="mm.go(11)" />
+	<div class="row">
+		<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<ul class="pagination justify-content-center mt-5">
+		  <li class="page-item disabled">
+			<a
+			  class="page-link"
+			  href="#"
+			  tabindex="-1"
+			  aria-disabled="true"
+			  onclick="brd.go(1)"
+			  >이전</a
+			>
+		  </li>
+		  <c:forEach var="i" begin="1" end="10">
+			<li class="page-item">
+			  <a class="page-link" href="#" onclick="brd.go(${i})">${i}</a>
+			</li>
+		  </c:forEach>
+		  <li class="page-item">
+			<a class="page-link" href="#" onclick="brd.go(11)">다음</a>
+		  </li>
+		</ul>
+	  </div>
+	  <div class="col-md-3"></div>
 	</div>
 </div>
 <script>

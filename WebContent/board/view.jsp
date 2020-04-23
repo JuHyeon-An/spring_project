@@ -11,10 +11,25 @@
 		<input type="button" id="btnRepl" value="답글"/>
 		<input type="button" id="btnFind" value="목록으로"/>
 		
-		<input type="text" name="findStr" value="${param.findStr }"/>
-		<input type="text" name="nowPage" value="${param.nowPage }"/>
-		<input type="text" name="serial" value="${param.serial }"/>
+		<input type="text" value="${vo.serial}"/>
+		<input type="text" value="${vo.id}"/>
+		<input type="text" value="${vo.subject}"/>
+		<input type="text" value="${vo.content}"/>
+		<input type="text" value="${vo.mDate}"/>
+		
+		
+		<input type="text" name="findStr" value="${p.findStr }"/>
+		<input type="text" name="nowPage" value="${p.nowPage }"/>
+		<input type="text" name="serial" value="${vo.serial }"/>
 	</form>
+	
+	<fieldset><legend>[첨부된 파일]</legend></fieldset>
+	<c:forEach var="i" items="${attList }">
+		<div>
+			<span>첨부된 파일 ${i.getSysFile }</span>
+		</div>
+	</c:forEach>
+	
 </div>
 <script>
 brd.func();

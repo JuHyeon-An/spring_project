@@ -1,1 +1,24 @@
+.title {
+  height: 50px;
+  background-color: #343a40;
+  color: white;
+}
 
+.title span {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.items {
+  height: 40px;
+  border-bottom: thin solid rgb(219, 218, 218);
+}
+.items:hover {
+  background-color: #d8d8d8;
+}
+.items span {
+  padding: 10px;
+  box-sizing: border-box;
+}
