@@ -14,7 +14,7 @@
 		<input type="text" value="${vo.serial}"/>
 		<input type="text" value="${vo.id}"/>
 		<input type="text" value="${vo.subject}"/>
-		<input type="text" value="${vo.content}"/>
+		<div class="form-control" style="min-height:400px;" contenteditable="true">${vo.content }</div>
 		<input type="text" value="${vo.mDate}"/>
 		
 		
@@ -26,11 +26,12 @@
 	<fieldset><legend>[첨부된 파일]</legend></fieldset>
 	<c:forEach var="i" items="${attList }">
 		<div>
-			<span>첨부된 파일 ${i.getSysFile }</span>
+			<span>첨부된 파일 ${i.sysFile }</span>
 		</div>
 	</c:forEach>
 	
 </div>
 <script>
 brd.func();
+
 </script>

@@ -48,14 +48,18 @@ public class BoardMybatisDao {
 	
 	public String insert(BoardVo vo, List<AttVo> attList) {
 		String msg = "정상적으로 저장되었습니다.";
+		System.out.println("insert가 실행이 되긴 하나요....");
 		try {
+			System.out.println("try를 하긴 하나요....");
 			int cnt = sqlSession.insert("board.insert", vo);
+			System.out.println("본문 저장 : "+cnt);
 			if(cnt<1) {
 				throw new Exception("본문 저장 중 오류발생");
 			}
 			
 			for(AttVo attVo : attList) {
 				cnt = sqlSession.insert("board.att_insert", attVo);
+				System.out.println("첨부파일 저장 : "+cnt);
 				if(cnt<1) {
 					throw new Exception("첨부 파일 저장 중 오류발생");
 				}

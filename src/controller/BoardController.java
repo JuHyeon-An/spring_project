@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import bean.BoardMybatisDao;
 import bean.Page;
 import mybatis.AttVo;
 import mybatis.BoardVo;
+import mybatis.FileUpload;
 
 @Controller
 public class BoardController {
@@ -84,14 +86,23 @@ public class BoardController {
 	}
 
 	@RequestMapping( value = "insertR.brd", method = {RequestMethod.POST})
-	public ModelAndView insertR() {
+	public ModelAndView insertR(HttpServletRequest req, HttpServletResponse resp) {
 		mv = new ModelAndView();
-		String msg = "게시판 정보가 저장되었습니다.";
-		Page p = new Page();
-		// dao를 쓰면 여기에 fileUpload 작업
+		String msg = "";
 		
+		FileUpload fu = new FileUpload(req, resp);
+		HttpServletRequest newReq = fu.uploading();
+		BoardVo vo = (BoardVo)newReq.getAttribute("vo");
+		List<AttVo> attList = (List<AttVo>)newReq.getAttribute("attList");
+		System.out.println("아이디 ; "+vo.getId());
+		
+		msg = dao.insert(vo, attList);
+		
+		System.out.println("여기까지 오나요?? "+msg);
+		System.out.println(newReq.getAttribute("p"));
+		
+		mv.addObject("p", newReq.getAttribute("p"));
 		mv.addObject("msg", msg);
-		mv.addObject("p", p);
 		mv.setViewName("result");
 		return mv;
 	}

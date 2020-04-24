@@ -119,5 +119,8 @@ public class Page {
 		this.search = search;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "endPage : "+endPage+" / totPage : "+totPage;
+	}
 }

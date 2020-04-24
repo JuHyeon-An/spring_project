@@ -18,7 +18,7 @@ public class FileUpload {
 	// 파일 업로드하는 고유한 기능 갖도록
 	
 //	String upload = "c:/Users/JHTA/git/web1/1907-web/WebContent/upload/";
-	static public String upload = "c:/Users/Ellen/git/web1/1907-web/WebContent/upload/";
+	static public String upload = "c:/Users/Ellen/eclipse-workspace/1907-spring/WebContent/upload/";
 	// 업로드되는 경로명
 	String tempDir = "c:/temp/";
 	// 파일이 전송되는 중간 중간 저장되는 장소
@@ -86,14 +86,17 @@ public class FileUpload {
 					switch (k) { // name값을 가져와서
 					case "id": //<input type="text" name="mId"/>
 					// input 상자의 name값이 mId면 v값을 vo의 mId에 집어넣어라
+						System.out.println("케이스가 아이디인 경우 "+v);
 						vo.setId(v);
 						break;
 						
 					case "subject":
+						System.out.println("케이스가 subject인 경우 "+v);
 						vo.setSubject(v);
 						break;
 					
 					case "pwd":
+						System.out.println("케이스가 pwd인 경우 "+v);
 						vo.setPwd(v);
 						break;
 						
@@ -102,6 +105,7 @@ public class FileUpload {
 						break;
 						
 					case "content":
+						System.out.println("케이스가 content인 경우 "+v);
 						vo.setContent(v);
 						break;
 					
@@ -170,6 +174,7 @@ public class FileUpload {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		req.setAttribute("vo", vo);
 		req.setAttribute("attList", attList);
 		req.setAttribute("delList", delList);

@@ -2,6 +2,7 @@ let brd = {};
 
 brd.func = function () {
   $("#btnFind").click(function () {
+	$("#frm_brd").removeAttr('encType');
     let param = $("#frm_brd").serialize();
     $.post("select.brd", param, function (data, state) {
       $("#main").html(data);
@@ -16,10 +17,31 @@ brd.func = function () {
   });
 
   $("#btnRegister").click(function () {
+	  alert($("#summernote").val());
+	  
+	  let fd = new FormData($('#frm_brd')[0]);
+	  
+	  $.ajax({
+		 url : "insertR.brd",
+		 type : "post",
+		 data : fd,
+		 contentType : false,
+		 processData : false,
+		 error : function(xhr, status, error){
+			 console.log(error);
+		 },
+		 success : function(data, xhr, status){
+			 $("#main").html(data);
+		 }
+	  })
+	  
+	/*
     let param = $("#frm_brd").serialize();
     $.post("insertR.brd", param, function (data, state) {
       $("#main").html(data);
     });
+    => enctype하면 여기 다 null!!!!
+    */
   });
 
   //수정폼
@@ -39,7 +61,12 @@ brd.func = function () {
   });
 
   $("#btnDelete").click(function () {
-    let param = $("#frm_brd").serialize();
+    
+	  let pwd = prompt("삭제하려면 암호를 입력하셍세요");
+	  if(pwd==null || pwd=='') return;
+	  frm_brd.pwd.value = pwd;
+	  
+	  let param = $("#frm_brd").serialize();
     $.post("deleteR.brd", param, function (data, state) {
       $("#main").html(data);
     });
@@ -69,6 +96,12 @@ brd.func = function () {
       $("#main").html(data);
     });
   };
+  
+  $('#summernote').summernote({
+	    placeholder: '내용을 입력하세요.',
+	    tabsize: 2,
+	    height: 400
+	  });
 };
 
 brd.init = function () {

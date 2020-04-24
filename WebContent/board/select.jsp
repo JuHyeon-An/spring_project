@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%> <%@taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="board" class="container">
-  <div id="header">게시물 검색</div>
+  <div id="header"><h3>게시물 검색</h3></div>
 
   <!-- title -->
   <div class="title row mt-3 mb-2">
@@ -32,7 +32,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </div>
     <div class="col-md-6">
       <ul class="pagination justify-content-center mt-5">
-        <li class="page-item ${(p.startPage>blockSize)? '' : 'disabled' }">
+        <li class="page-item ${(p.startPage>p.blockSize)? '' : 'disabled' }">
           <a
             class="page-link"
             href="#"
@@ -47,7 +47,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <a class="page-link" href="#" onclick="brd.go(${i})">${i}</a>
           </li>
         </c:forEach>
-        <li class="page-item ${(p.endPage<totPage)? '' : 'disabled' }">
+        <li class="page-item ${(p.endPage<p.totPage)? '' : 'disabled' }">
           <a class="page-link" href="#" onclick="brd.go(${p.endPage+1})">다음</a>
         </li>
       </ul>
@@ -73,7 +73,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       </div>
     </div>
     <div class="col-md-4"></div>
-    <input type="button" value="입력" id="btnInsert" />
     <input type="text" name="nowPage" value="${p.nowPage }" />
     <input type="text" name="serial" value="${param.serial }" />
   </form>

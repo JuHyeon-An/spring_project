@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
       type="text/css"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
     <style>
       .fakeimg {
@@ -38,7 +39,7 @@ pageEncoding="UTF-8"%>
             <a class="nav-link" href="#" onclick="brd.init();">자유게시판</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="btnInsert">게시글작성</a>
+            <a class="nav-link" href="#">게시글작성</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" onclick="mm.init();">회원조회</a>
