@@ -16,6 +16,7 @@
 		<input type="text" value="${vo.subject}"/>
 		<div class="form-control" style="min-height:400px;" contenteditable="true">${vo.content }</div>
 		<input type="text" value="${vo.mDate}"/>
+		<input type="text" name="pwd">
 		
 		
 		<input type="text" name="findStr" value="${p.findStr }"/>

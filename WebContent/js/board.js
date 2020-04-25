@@ -17,7 +17,6 @@ brd.func = function () {
   });
 
   $("#btnRegister").click(function () {
-	  alert($("#summernote").val());
 	  
 	  let fd = new FormData($('#frm_brd')[0]);
 	  
@@ -54,10 +53,26 @@ brd.func = function () {
 
   //수정내용저장
   $("#btnUpdate").click(function () {
-    let param = $("#frm_brd").serialize();
-    $.post("modifyR.brd", param, function (data, state) {
-      $("#main").html(data);
-    });
+	  
+	  let pwd = prompt("수정하려면 암호를 입력하셍세요");
+	  if(pwd==null || pwd=='') return;
+	  frm_brd.pwd.value = pwd;
+	  
+	  let fd = new FormData($('#frm_brd')[0]);
+	  
+	  $.ajax({
+		 url : "modifyR.brd",
+		 type : "post",
+		 data : fd,
+		 contentType : false,
+		 processData : false,
+		 error : function(xhr, status, error){
+			 console.log(error);
+		 },
+		 success : function(data, xhr, status){
+			 $("#main").html(data);
+		 }
+	  })
   });
 
   $("#btnDelete").click(function () {
@@ -81,13 +96,24 @@ brd.func = function () {
   });
 
   $("#btnReplR").click(function () {
-    // 답변 저장
-    let param = $("#frm_brd").serialize();
-    $.post("replR.brd", param, function (data, state) {
-      $("#main").html(data);
-    });
+	  
+	  let fd = new FormData($('#frm_brd')[0]);
+	  
+	  $.ajax({
+		 url : "replR.brd",
+		 type : "post",
+		 data : fd,
+		 contentType : false,
+		 processData : false,
+		 error : function(xhr, status, error){
+			 console.log(error);
+		 },
+		 success : function(data, xhr, status){
+			 $("#main").html(data);
+		 }
+	  })
   });
-
+  
   brd.go = function (nowPage) {
     frm_brd.nowPage.value = nowPage;
     let param = $("#frm_brd").serialize();
@@ -102,6 +128,18 @@ brd.func = function () {
 	    tabsize: 2,
 	    height: 400
 	  });
+  
+  $("#btnAtt").change(function(){
+	  let str = "<ol>";
+	  // let files = frm_brd.attFile.files;
+	  let files = $("#btnAtt")[0].files;
+	  for(f of files){
+		  str += "<li>" + f.name + " [ "+parseInt(f.size/1000) + "Kb ]";
+	  }
+	  str += "</ol>";
+	  $("#attList").html(str);
+  })
+  
 };
 
 brd.init = function () {
@@ -120,5 +158,20 @@ brd.view = function (serial) {
     $("#main").html(data);
   });
 };
+
+function delCheck(check){
+	let tag = check.parentElement.childNodes[1];
+	if(check.checked){
+		tag.style.textDecoration = "line-through";
+		tag.style.color="#f00";
+	}else{
+		tag.style.textDecoration = "none";
+		tag.style.color = "";
+	}
+}
+
+function goLogin(){
+	$("#main").load("./member/login.jsp");
+}
 
 //brd.func();

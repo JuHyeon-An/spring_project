@@ -86,6 +86,7 @@ public class BoardMybatisDao {
 		}
 	}
 	
+	//상세보기, 수정
 	public BoardVo view(int serial, String flag) {
 		BoardVo vo = null;
 		int cnt = 0;
@@ -133,6 +134,7 @@ public class BoardMybatisDao {
 				if(cnt<1) throw new Exception("첨부 데이터 정보 수정 중 오류 발생");
 			}
 			
+			System.out.println(delList+"delList가 있나요");
 			
 			// boardAtt에 삭제파일 정보를 제거
 			for(AttVo attVo : delList) {
@@ -174,12 +176,14 @@ public class BoardMybatisDao {
 
 			// 첨부된 파일 목록
 			List<AttVo> delList = sqlSession.selectList("board.att_list", vo.getSerial());
+			System.out.println(vo.getSerial());
+			System.out.println("여기 비었나" + delList);
 			
 			// 첨부 테이블 자료 삭제
-			//for(AttVo attVo : delList) {
+			if(delList.size()>0) {
 				cnt = sqlSession.delete("board.att_delete2", vo.getSerial());
 				if(cnt<1) throw new Exception("사진 삭제 중 오류가 발생했습니다.");
-			//}
+			}
 			
 			// 실제 사진 파일 삭제
 			delFile(delList);
@@ -218,5 +222,21 @@ public class BoardMybatisDao {
 			//sqlSession.close();
 			return msg;
 		}
+	}
+	
+	public boolean login(MemberVo vo) {
+		boolean a = true;
+		int cnt = 0;
+		try {
+			
+			cnt = sqlSession.selectOne("board.login", vo);
+			if(cnt<1) throw new Exception("아이디나 비밀번호가 일치하지 않습니다");
+		}catch(Exception ex) {
+			
+		}finally {
+			//sqlSession.close();
+			return a;
+		}
+		
 	}
 }

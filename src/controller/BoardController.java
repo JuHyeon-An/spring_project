@@ -94,11 +94,9 @@ public class BoardController {
 		HttpServletRequest newReq = fu.uploading();
 		BoardVo vo = (BoardVo)newReq.getAttribute("vo");
 		List<AttVo> attList = (List<AttVo>)newReq.getAttribute("attList");
-		System.out.println("아이디 ; "+vo.getId());
 		
 		msg = dao.insert(vo, attList);
 		
-		System.out.println("여기까지 오나요?? "+msg);
 		System.out.println(newReq.getAttribute("p"));
 		
 		mv.addObject("p", newReq.getAttribute("p"));
@@ -108,24 +106,60 @@ public class BoardController {
 	}
 	
 	@RequestMapping( value = "modify.brd", method = {RequestMethod.POST})
-	public ModelAndView modify() {
+	public ModelAndView modify(HttpServletRequest req) {
 		mv = new ModelAndView();
+		int serial = Integer.parseInt(req.getParameter("serial"));
+		BoardVo vo = dao.view(serial, "");
+		List<AttVo> attList = dao.getAttList(serial);
+		
+		
+		Page p = new Page();
+		p.setFindStr(req.getParameter("findStr"));
+		p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		
+		mv.addObject("p", p);
+		mv.addObject("vo", vo);
+		mv.addObject("attList", attList);
 		mv.setViewName("modify");
 		return mv;
 	}
 	
 	@RequestMapping( value = "modifyR.brd", method = {RequestMethod.POST})
-	public ModelAndView modifyR() {
-		String msg = "수정이 완료되었습니다.";
+	public ModelAndView modifyR(HttpServletRequest req, HttpServletResponse resp) {
 		mv = new ModelAndView();
+		
+		FileUpload fu = new FileUpload(req, resp);
+		HttpServletRequest newReq = fu.uploading();
+		
+		BoardVo vo = (BoardVo)newReq.getAttribute("vo");
+		List<AttVo> att = (List<AttVo>)newReq.getAttribute("attList");
+		List<AttVo> del = (List<AttVo>)newReq.getAttribute("delList");
+		
+		String msg = dao.modify(vo, att, del);
+
+		mv.addObject("msg", msg);
+		mv.addObject("p", req.getAttribute("p"));
 		mv.setViewName("result");
 		return mv;
 	}
 	
 	@RequestMapping( value = "deleteR.brd", method = {RequestMethod.POST})
-	public ModelAndView deleteR() {
-		String msg = "삭제가 완료되었습니다.";
+	public ModelAndView deleteR(HttpServletRequest req) {
 		mv = new ModelAndView();
+		BoardVo vo = new BoardVo();
+		int serial = Integer.parseInt(req.getParameter("serial"));
+		String pwd = req.getParameter("pwd");
+
+		Page p = new Page();
+		p.setNowPage(Integer.parseInt(req.getParameter("nowPage")));
+		p.setFindStr(req.getParameter("findStr"));
+		
+		vo.setSerial(serial);
+		vo.setPwd(pwd);
+		String msg = dao.delete(vo);
+		
+		mv.addObject("p", p);
+		mv.addObject("msg", msg);
 		mv.setViewName("result");
 		return mv;
 	}
@@ -138,9 +172,20 @@ public class BoardController {
 	}
 	
 	@RequestMapping( value = "replR.brd", method = {RequestMethod.POST})
-	public ModelAndView replR() {
-		String msg = "등록이 완료되었습니다.";
+	public ModelAndView replR(HttpServletRequest req, HttpServletResponse resp) {
+		
 		mv = new ModelAndView();
+		String msg = "";
+		
+		FileUpload fu = new FileUpload(req, resp);
+		HttpServletRequest newReq = fu.uploading();
+		BoardVo vo = (BoardVo)newReq.getAttribute("vo");
+		List<AttVo> attList = (List<AttVo>)newReq.getAttribute("attList");
+		
+		msg = dao.repl(vo, attList);
+		
+		mv.addObject("p", newReq.getAttribute("p"));
+		mv.addObject("msg", msg);
 		mv.setViewName("result");
 		return mv;
 	}

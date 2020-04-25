@@ -29,7 +29,7 @@ pageEncoding="UTF-8"%>
         class="navbar-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#collapsibleNavbar"cd 
+        data-target="#collapsibleNavbar"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,13 +39,7 @@ pageEncoding="UTF-8"%>
             <a class="nav-link" href="#" onclick="brd.init();">자유게시판</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">게시글작성</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#" onclick="mm.init();">회원조회</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">회원등록</a>
           </li>
         </ul>
       </div>

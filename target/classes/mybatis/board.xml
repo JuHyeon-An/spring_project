@@ -117,6 +117,9 @@
 		update board set hit = hit+1 where serial = ${_parameter}
 	</update>
 
+	<select id="login" parameterType="bean.MemberVo">
+		select count(mId) from member where id = #{mid} and pwd = #{pwd}
+	</select>
 	<!--
 	<resultMap id="my_map"/>
 	<update/>

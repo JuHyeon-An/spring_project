@@ -22,3 +22,20 @@
   padding: 10px;
   box-sizing: border-box;
 }
+
+#index-header{
+	position:relative;	
+}
+
+#login-link{
+	
+	position:absolute;
+	top:3px;
+	right:70px;
+}
+
+#logout-link{
+	position:absolute;
+	top:3px;
+	right:2px;
+}

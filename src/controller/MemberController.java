@@ -8,10 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import bean.BoardMybatisDao;
 import bean.Page;
 
 @Controller
 public class MemberController {
+	
+	BoardMybatisDao dao;
+	
+	MemberController(BoardMybatisDao dao){
+		this.dao = dao;
+	}
 
 	ModelAndView mv;
 	@RequestMapping(value = "/select.mm", method= {RequestMethod.GET, RequestMethod.POST})
@@ -93,6 +100,14 @@ public class MemberController {
 	@RequestMapping( value = "replR.mm", method = {RequestMethod.POST})
 	public ModelAndView replR() {
 		String msg = "등록이 완료되었습니다.";
+		mv = new ModelAndView();
+		mv.setViewName("result");
+		return mv;
+	}
+	
+	@RequestMapping( value = "login.mm", method = {RequestMethod.POST})
+	public ModelAndView login() {
+
 		mv = new ModelAndView();
 		mv.setViewName("result");
 		return mv;

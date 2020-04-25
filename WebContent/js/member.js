@@ -54,6 +54,13 @@ mm.func = function(){
 			$("#main").html(data);
 		});
 	}
+	
+	  $("#btnLogin").click(function(){
+		  let param = $("#frm_mm").serialize();
+		    $.post("login.brd", param, function (data, state) {
+		      $("#main").html(data);
+		    });
+	  })
 }
 
 

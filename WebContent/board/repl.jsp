@@ -6,12 +6,37 @@
 
 	<form name="frm_brd" id="frm_brd" method="post">
 	<!-- UI -->
-		<input type="button" id="btnReplR" value="답변저장"/>
-		<input type="button" id="btnFind" value="목록으로"/>
+	
+	<div class="col-md-1"></div>
+		<div class="form-group col-md-10">
+			<label for="mId">아이디</label>
+			<input type="text" class="form-control"
+				id="mId" name="id"/> 
+				<input type="text" name="pwd">
+				
+				<label for="subject">제목</label> <input
+				type="text" class="form-control" id="subject" name="subject" placeholder="제목을 입력하세요" />
+				
+			<label for="content">내용</label>
+			
+			<textArea id="summernote" name="content" placeholder="내용을 입력하세요."></textArea>
+			
+			<div class="text-center mt-3">
+				<input type="button" class="btn btn-secondary" id="btnReplR"
+					value="답변저장" /> <input type="button" class="btn btn-secondary"
+					id="btnFind" value="목록으로" />
+
+			</div>
+			<input type="file" name="att" id="btnAtt" multiple/>
+
+			<div id="attList"></div>
+
+			<input type="text" name="findStr" value="${param.findStr }" />
+			<input type="text" name="nowPage" value="${param.nowPage }" />
+			<input type="text" name="pSerial" value="${param.serial }" />
 		
-		<input type="text" name="serial" value="${param.serial }"/>
-		<input type="text" name="findStr" value="${param.findStr }"/>
-		<input type="text" name="nowPage" value="${param.nowPage }"/>
+		</div>
+		<div class="col-md-1"></div>
 	</form>
 </div>
 <script>

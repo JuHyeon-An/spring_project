@@ -26,7 +26,9 @@
 					id="btnFind" value="취소" />
 
 			</div>
-			<input type="file" name="att" multiple/>
+			<input type="file" name="att" id="btnAtt" multiple/>
+
+			<div id="attList"></div>
 
 			<input type="text" name="findStr" value="${param.findStr }" />
 			<input type="text" name="nowPage" value="${param.nowPage }" />
