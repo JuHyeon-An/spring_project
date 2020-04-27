@@ -114,15 +114,6 @@ brd.func = function () {
 	  })
   });
   
-  brd.go = function (nowPage) {
-    frm_brd.nowPage.value = nowPage;
-    let param = $("#frm_brd").serialize();
-    console.log(param);
-    $.post("select.brd", param, function (data, state) {
-      $("#main").html(data);
-    });
-  };
-  
   $('#summernote').summernote({
 	    placeholder: '내용을 입력하세요.',
 	    tabsize: 2,
@@ -141,6 +132,15 @@ brd.func = function () {
   })
   
 };
+
+brd.go = function (nowPage) {
+    frm_brd.nowPage.value = nowPage;
+    let param = $("#frm_brd").serialize();
+    console.log(param);
+    $.post("select.brd", param, function (data, state) {
+      $("#main").html(data);
+    });
+  };
 
 brd.init = function () {
   //brd안에 있는 init라는 함수

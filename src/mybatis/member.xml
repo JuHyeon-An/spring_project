@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTDMapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	<resultMap id="mm_map" type="bean.MemberVo">
+		<result column="mId" property="mId"/>
+		<result column="mName" property="mName"/>
+		<result column="pwd" property="pwd"/>
+		<result column="rDate" property="rDate"/>
+		<result column="grade" property="grade"/>
+		<collection property="photos" 
+					javaType="bean.MemberPhoto">
+			<result column="serial" property="serial"/>
+			<result column="oriFile" property="oriFile"/>
+			<result column="sysFile" property="sysFile"/>
+		</collection>
+	</resultMap>
+
+	<select id="select" parameterType="bean.Page" 
+						resultMap="mm_map">
+		 select * from (
+         select rownum rno, M.* from (
+            select MM.mId mId, mName, grade, to_char(MM.rDate, 'rrrr-mm-dd') rDate, serial, oriFile, sysFile
+            from member MM left outer join memberphoto MP on MM.mId=MP.mId
+            where mName like '%${findStr}%' or MM.mId like '%${findStr}%'
+            order by rDate desc, mName asc)M
+      )where rno between ${startNo} and ${endNo}
+      	
+	</select>
+	
+	<select id="count" parameterType="bean.Page" 
+						resultType="Integer">
+		select count(mId) from member where mName like '%${findStr}%' or mId like '%${findStr}%'
+	</select>
+	
+	<select id="login" parameterType="bean.MemberVo" resultType="Integer">
+		select count(mId) from member where mId = #{mId} and pwd = #{pwd}
+	</select>
+	
+	<insert id="insert" parameterType="bean.MemberVo">
+		insert into member values(#{mId}, #{mName}, #{rDate}, #{pwd}, ${grade})
+	</insert>
+	
+	<insert id="attInsert" parameterType="bean.MemberPhoto">
+		insert into memberphoto values(seq_photo_serial.nextval, #{mId}, #{sysFile}, #{oriFile} )
+	</insert>
+
+</mapper>

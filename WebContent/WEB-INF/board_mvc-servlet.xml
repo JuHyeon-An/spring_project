@@ -17,7 +17,6 @@
 	<!-- bean -->
 	<bean id="brdDao" class="bean.BoardMybatisDao"/>
 	
-	
 	<!-- controller (servlet code) -->
 	<bean id="brd_controller" class="controller.BoardController">
 		<constructor-arg ref="brdDao"/>

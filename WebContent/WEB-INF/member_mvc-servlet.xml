@@ -15,9 +15,12 @@
 	<context:annotation-config />
 	
 	<!-- bean -->
+	<bean id="mmDao" class="bean.MemberDao"/>
 	
 	<!-- controller (servlet code) -->
-	<bean id="mm_controller" class="controller.MemberController"/>
+	<bean id="mm_controller" class="controller.MemberController">
+		<constructor-arg ref="mmDao"/>
+	</bean>
 	
 	<!-- view resolver (결과 페이지)-->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

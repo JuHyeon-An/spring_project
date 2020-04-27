@@ -20,8 +20,6 @@
 	
 	<mappers>
 		<mapper resource="mybatis/board.xml"/>
-		<!-- 
 		<mapper resource="mybatis/member.xml"/>
-		 -->
 	</mappers>
 </configuration>

@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="board">
 	<div id="header">결과</div>
-	${msg }
+	<h3>${msg }</h3>
 	
 	<form name="frm_mm" id="frm_mm" method="post">
 	<!-- UI -->
