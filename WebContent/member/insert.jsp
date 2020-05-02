@@ -21,7 +21,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         value="주현"
       />
       <label for="mDate">날짜</label>
-      <input type="date" class="form-control" name="rDate" value="2020-04-27"/>
+      <input type="date" class="form-control" name="rDate" value="2020-04-28"/>
       <label for="grade">학년</label>
       <select class="form-control" name="grade">
         <option>학년선택</option>

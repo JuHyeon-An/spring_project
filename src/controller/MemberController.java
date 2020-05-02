@@ -1,5 +1,8 @@
 package controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import bean.MemberDao;
@@ -48,7 +52,7 @@ public class MemberController {
 		//데이터를 심을때
 		// 이렇게 담으면 request영역에 담겨져서 나감
 		// ${list} 로 받을 수 있다는 의!미!
-		
+		mv.addObject("p", p);
 		mv.setViewName("select");
 		// select라는 페이지에 넘기겠다!
 		// 그럼 얘가 resolver에서 받음 
@@ -56,18 +60,22 @@ public class MemberController {
 	}
 	
 	@RequestMapping( value ="/view.mm", method= {RequestMethod.POST})
-	public ModelAndView view() {
+	public ModelAndView view(HttpServletRequest req, HttpServletResponse resp) {
 		mv = new ModelAndView();
+		String mId = req.getParameter("mId");
+		System.out.println(mId);
+		
+		MemberVo vo = dao.view(mId);
+		
+		mv.addObject("vo", vo);
 		mv.setViewName("view");
 		
 		return mv;
 	}
 	
 	@RequestMapping( value = "/insert.mm", method = {RequestMethod.POST})
-	public ModelAndView insert(HttpServletRequest req, HttpServletResponse resp) {
-		mv = new ModelAndView();
-		mv.setViewName("insert");
-		return mv;
+	public String insert(HttpServletRequest req, HttpServletResponse resp) {
+		return "insert";
 	}
 
 	@RequestMapping( value = "insertR.mm", method = {RequestMethod.POST})
@@ -96,10 +104,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping( value = "modify.mm", method = {RequestMethod.POST})
-	public ModelAndView modify() {
-		mv = new ModelAndView();
-		mv.setViewName("modify");
-		return mv;
+	public String modify() {
+		return "modify";
 	}
 	
 	@RequestMapping( value = "modifyR.mm", method = {RequestMethod.POST})
@@ -110,27 +116,13 @@ public class MemberController {
 		return mv;
 	}
 	
-	@RequestMapping( value = "deleteR.mm", method = {RequestMethod.POST})
-	public ModelAndView deleteR() {
-		String msg = "삭제가 완료되었습니다.";
-		mv = new ModelAndView();
-		mv.setViewName("result");
-		return mv;
-	}
-	
-	@RequestMapping( value = "repl.mm", method = {RequestMethod.POST})
-	public ModelAndView repl() {
-		mv = new ModelAndView();
-		mv.setViewName("repl");
-		return mv;
-	}
-	
-	@RequestMapping( value = "replR.mm", method = {RequestMethod.POST})
-	public ModelAndView replR() {
-		String msg = "등록이 완료되었습니다.";
-		mv = new ModelAndView();
-		mv.setViewName("result");
-		return mv;
+	@RequestMapping( value = "deleteR.mm", method = {RequestMethod.GET}, produces = "text/html;charset=utf8")
+	@ResponseBody
+	public String deleteR(HttpServletRequest req, HttpServletResponse resp) {
+		String msg = dao.delete(req.getParameter("mId"));
+		System.out.println(req.getParameter("mId"));
+		System.out.println("컨트롤");
+		return msg;
 	}
 	
 	@RequestMapping( value = "login.mm", method = {RequestMethod.POST})
@@ -149,6 +141,9 @@ public class MemberController {
 			msg = "로그인 성공";
 			session.setAttribute("mId", vo.getmId());
 		}
+		
+		//HttpSession session = req.getSession();
+		
 		mv = new ModelAndView();
 		mv.addObject("msg", msg);
 		mv.setViewName("result");
@@ -159,6 +154,7 @@ public class MemberController {
 	public ModelAndView logout(HttpSession session) {
 		System.out.println("로그아웃 ㅡㅡ");
 		session.invalidate();
+		//session.removeAttribute("session_id")
 		mv = new ModelAndView();
 		mv.setViewName("logout");
 		return mv;

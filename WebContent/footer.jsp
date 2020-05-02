@@ -12,3 +12,5 @@ pageEncoding="UTF-8"%>
     <script src="./js/member.js"></script>
     <script src="./js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    

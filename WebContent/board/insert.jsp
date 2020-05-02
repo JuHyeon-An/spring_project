@@ -8,7 +8,7 @@
 		
 		<div class="col-md-1"></div>
 		<div class="form-group col-md-10">
-			<label for="mId">아이디</label>
+			<label for="mId">${sessionScope.mId }</label>
 			<input type="text" class="form-control"
 				id="mId" name="id"/> 
 				<input type="text" name="pwd">

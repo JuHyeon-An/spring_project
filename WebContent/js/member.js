@@ -52,9 +52,16 @@ mm.func = function(){
 	})
 	
 	$("#btnDelete").click(function() {
-		let param = $("#frm_mm").serialize();
-		$.post("deleteR.mm", param, function(data, state) {
-			$("#main").html(data);
+		let mId = frm_mm.mId.value;
+		alert(mId);
+		$.get("deleteR.mm", {"mId" : mId}, function(data, state) {
+			Swal.fire({
+				  icon: 'success',
+				  title: data,
+				  showConfirmButton: true
+				}).then(() => {
+					$("#btnFind").trigger('click');
+				})
 		});
 	})
 	
@@ -83,10 +90,9 @@ mm.init = function(){
 	// ./board/select.jsp를 실행한 결과가 main에 로드됨
 }
 
-mm.view = function(serial){
-	frm_mm.serial.value = serial;
+mm.view = function(mId){
+	frm_mm.mId.value = mId;
 	let param = $("#frm_mm").serialize();
-	console.log(param);
 	$.post("view.mm", param, function(data, state) {
 		$("#main").html(data);
 	});

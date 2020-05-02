@@ -46,5 +46,21 @@
 	<insert id="attInsert" parameterType="bean.MemberPhoto">
 		insert into memberphoto values(seq_photo_serial.nextval, #{mId}, #{sysFile}, #{oriFile} )
 	</insert>
+	
+	<select id="view" parameterType="String" resultType="bean.MemberVo">
+		select m.mId, pwd, mName, to_char(rDate, 'rrrr-mm-dd') rDate, grade, p.sysFile from member m join memberphoto p 
+		on m.mId = p.mId where m.mId = #{_parameter}
+	</select>
 
+	<delete id="delete" parameterType="String">
+		delete from member where mId = #{_parameter}
+	</delete>
+	
+	<delete id="deleteAtt" parameterType="String">
+		delete from memberphoto where mId = #{_parameter}
+	</delete>
+
+	<select id="selectAtt" parameterType="String" resultType="bean.MemberPhoto">
+		select mId, sysFile, oriFile from memberphoto where mId = #{_parameter}
+	</select>	
 </mapper>

@@ -9,7 +9,9 @@ import org.apache.ibatis.session.SqlSession;
 
 import bean.MemberPhoto;
 import bean.MemberVo;
+import mybatis.AttVo;
 import mybatis.Factory;
+import mybatis.FileUpload;
 
 public class MemberDao {
 // 서블릿과 BoardMybatis를 연결해주는 역할
@@ -72,9 +74,57 @@ public class MemberDao {
 			System.out.println("cnt2 : "+cnt);
 		}catch(Exception ex) {
 			ex.printStackTrace();
+			sqlSession.rollback();
 		}finally {
 			return msg; 
 		}
 	}
 	
-}
+	public MemberVo view(String mId) {
+			MemberVo vo = null;
+		try {
+			vo = sqlSession.selectOne("member.view", mId);
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return vo;
+		}
+	}
+	
+	public String delete(String mId) {
+		String msg = "성공적으로 삭제가 되었네요?!";
+		try {
+			cnt = sqlSession.delete("member.delete", mId);
+			if(cnt>0) {
+				sqlSession.commit();	
+			}else {
+				throw new Exception("본문 삭제 중 오류가 발생했다!");
+			}
+			
+			MemberPhoto mp = sqlSession.selectOne("member.selectAtt", mId);
+			
+			cnt = sqlSession.delete("member.deleteAtt", mId);
+			if(cnt>0) {
+				sqlSession.commit();
+			}else {
+				throw new Exception("사진 삭제 중 오류가 발생했다!");
+			}
+
+			if(mp!=null) {
+				delFile(mp);
+			}
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return msg;
+		}
+	}
+	
+	public void delFile(MemberPhoto mp) {
+			File f = new File(FileUpload.upload + mp.getSysFile());
+			if(f.exists()) f.delete();
+		}
+	}
+	

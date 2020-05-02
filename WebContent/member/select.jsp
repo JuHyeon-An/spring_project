@@ -29,6 +29,8 @@
 				</div>
 			</div>
 			</div>
+			<input type="hidden" name="mId"/>
+			<input type="hidden" name="nowPage"/>
 	</form>
 
 	<!-- list -->
@@ -49,7 +51,7 @@
 				<div class="card-body">
 					<h5 class="card-title">${i.mName}</h5>
 					<p class="card-text">${i.mId}</p>
-					<a href="#" class="btn btn-outline-secondary">See Profile</a>
+					<span class="btn btn-outline-secondary" onclick="mm.view('${i.mId}');">See Profile</span>
 				</div>
 			</div>
 		</c:forEach>
@@ -58,23 +60,23 @@
 		<div class="col-md-3"></div>
 	<div class="col-md-6">
 		<ul class="pagination justify-content-center mt-5">
-		  <li class="page-item disabled">
+		  <li class="page-item ${(p.startPage>p.blockSize)? '' : 'disabled' }disabled">
 			<a
 			  class="page-link"
 			  href="#"
 			  tabindex="-1"
 			  aria-disabled="true"
-			  onclick="brd.go(1)"
+			  onclick="brd.go(${p.startPage-1})"
 			  >이전</a
 			>
 		  </li>
-		  <c:forEach var="i" begin="1" end="10">
-			<li class="page-item">
-			  <a class="page-link" href="#" onclick="brd.go(${i})">${i}</a>
+		  <c:forEach var="i" begin="${p.startPage }" end="${p.endPage }">
+			<li class="page-item ${(i==p.nowPage)? 'active' : '' }">
+			  <a class="page-link" href="#" onclick="mm.go(${i})">${i}</a>
 			</li>
 		  </c:forEach>
-		  <li class="page-item">
-			<a class="page-link" href="#" onclick="brd.go(11)">다음</a>
+		  <li class="page-item ${(p.endPage<p.totPage? '' : 'disabled' )}">
+			<a class="page-link" href="#" onclick="mm.go(${p.endPage+1})">다음</a>
 		  </li>
 		</ul>
 	  </div>
