@@ -72,6 +72,12 @@ body {
   width: 100%;
 }
 
+.add-trip {
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .posting-profile {
   width: 60px;
   height: 60px;
@@ -122,4 +128,34 @@ body {
 }
 .post-bottom-bar {
   min-height: 20px;
+}
+
+.trip-list-box {
+  padding: 10px;
+  background: #eee;
+  border-radius: 3px;
+}
+
+.thumb-custom {
+  overflow: hidden;
+  height: 70%;
+}
+
+.thumb-custom img {
+  width: 100%;
+  height: 100%;
+}
+
+.thumb-review {
+  overflow: hidden;
+  height: 70%;
+}
+
+.thumb-review img {
+  width: 100%;
+  height: 50%;
+}
+
+.single-destinations {
+  height: 80%;
 }
