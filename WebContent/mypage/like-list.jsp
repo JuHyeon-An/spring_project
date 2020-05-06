@@ -45,14 +45,25 @@
     <div class="col-lg-4">
       <div class="single-destinations">
         <div class="thumb-review">
-          <img src="./img/hotels/d3.jpg" alt="" />
+          <img src="./custom-image//food3.jpg" alt="" />
         </div>
         <div class="details">
           <h4 class="d-flex justify-content-between">
-            <span>익선돈까스</span>
+            <span>롤인익선</span>
           </h4>
+          <p>작성자 : 누구누구</p>
+          <h5 class="d-flex justify-content-between">
+            "리뷰 제목"
+            <div class="star">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </h5>
           <p>
-            	서울, 대한민국 | 182 Reviews
+            여기는 제가 학원에 다닐 때 자주 갔던 곳인데 어쩌구 저쩌구.....
           </p>
           <div class="trip-list-box text-center">서울 여행</div>
         </div>

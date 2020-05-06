@@ -19,9 +19,6 @@ body {
   height: 120px;
 }
 
-.img-container {
-}
-
 .profile-menu a:hover {
   border-bottom: 2px solid seagreen;
   font-weight: 1000;
@@ -138,24 +135,541 @@ body {
 
 .thumb-custom {
   overflow: hidden;
-  height: 70%;
+  height: 205px;
+  background: #ffffff;
 }
 
 .thumb-custom img {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .thumb-review {
   overflow: hidden;
-  height: 70%;
+  height: 121px;
 }
 
 .thumb-review img {
   width: 100%;
-  height: 50%;
+  height: auto;
 }
 
 .single-destinations {
   height: 80%;
+}
+
+.list-container {
+  height: 315px;
+  border: 1px solid #eee;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.list-container h3 {
+  padding: 40% 20%;
+  text-align: center;
+}
+
+.list-container p {
+  margin-bottom: 0;
+}
+
+.edit-trip-input {
+  outline: none;
+  border: none;
+  border-bottom: 2px black solid;
+  background: transparent;
+  width: 50%;
+  margin-bottom: 30px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.edit-trip {
+  background: #ffffff;
+  border: 1px solid #eee;
+  padding: 20px;
+}
+
+.edit-trip-input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-size: 20px;
+  font-weight: 400;
+  color: #777777;
+  opacity: 0.8; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  font-size: 20px;
+  font-weight: 600;
+  color: #777777;
+  opacity: 0.8; /* Firefox */
+}
+
+::-ms-input-placeholder {
+  font-size: 20px;
+  font-weight: 600;
+  color: #777777;
+  opacity: 0.8; /* Firefox */
+}
+
+.btn-edit {
+  outline: none;
+  background: transparent;
+  border-radius: 4px;
+  border: none;
+  font-size: 20px;
+}
+
+#map {
+  border: 1px solid #eee;
+}
+
+.add-from-like div {
+  border: 1px solid #eee;
+  padding: 20px;
+  text-align: center;
+}
+
+.add-from-like input {
+  padding: 0px;
+  width: 30px;
+  margin-left: 5px;
+}
+
+.edit-plan {
+  border: 1px solid #eee;
+  padding: 50px 20px;
+  margin-top: 50px;
+}
+
+.plan-container {
+  padding: 2% 10% 2% 10%;
+  background: rgb(243, 240, 240);
+  border-radius: 4px;
+  margin: 1px;
+}
+
+/* edit-trip2 (test2) */
+
+.my-main-map {
+  width: 100%;
+  height: 100%;
+}
+
+.my-main-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.my-main-side {
+  background: #203341;
+  height: 100%;
+  width: 230px;
+}
+
+.date-box {
+  width: 100%;
+  background: #203341;
+}
+
+.date-box li {
+  width: 100%;
+  line-height: 50px;
+  background: #203341;
+  color: #fff;
+  text-align: center;
+  border-bottom: solid 1px #374854;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+}
+
+.plan-category {
+  width: 100%;
+  height: auto;
+  max-height: 70%;
+  overflow-y: auto;
+}
+
+.plan-category li {
+  width: 100%;
+  height: 75px;
+  color: #fff;
+  text-align: center;
+  border-bottom: solid 1px #374854;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+
+  padding-left: 35px;
+  padding-top: 15px;
+}
+
+/* 중복 : 추후 js로 컨트롤할것 */
+.plan-category li.on {
+  background: #1a7ad9;
+  border-bottom: solid 1px #1a7ad9;
+}
+
+.plan-category li:hover {
+  background: #1a7ad9;
+  border-bottom: solid 1px #1a7ad9;
+}
+
+.plan-category li:not(.on):hover {
+  background: #164c88;
+}
+
+.show-all-day {
+  line-height: 70px;
+  font-size: 15px !important;
+  width: 100%;
+  line-height: 50px;
+  background: #203341;
+  color: #fff;
+  text-align: center;
+  border-bottom: solid 1px #374854;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 530;
+  padding: 10px;
+}
+
+.day-edit-start-btn {
+  margin-top: 18px;
+  margin-left: 10px;
+  background: url(/res/img/workspace/new/cat_set_icon.png) no-repeat;
+  padding-left: 18px;
+  line-height: 15px;
+}
+
+.full-date-info {
+  padding-left: 10px;
+}
+
+.cat-date-left-box {
+  padding-right: 10px;
+}
+
+.cat-left-day {
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cat-left-date {
+  color: #49b2e9;
+  font-size: 11px;
+}
+
+.cat-right-weekday {
+  padding-bottom: 4px;
+  text-align: left !important;
+}
+.cat-right-city {
+  color: #b3b3b3;
+  text-align: left !important;
+}
+
+.cat-add-box {
+  width: 160px;
+  background: rgb(32, 51, 65);
+  color: rgb(255, 255, 255);
+  height: 50px;
+}
+
+.cat-add-box {
+  padding-top: 15px;
+}
+
+.cat-add-box div {
+  width: 124px;
+  height: 32px;
+  line-height: 32px;
+  border: solid 1px #fff;
+  text-align: center;
+  margin: 0 auto;
+  cursor: pointer;
+  text-align: center;
+}
+
+.title-box {
+  position:relative;
+  width: 100%;
+  height: 50px;
+  background: #707070;
+  color: #fff;
+  line-height: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 0px 10px;
+}
+
+/* depth1 */
+
+.schedule-detail-box {
+  width: 280px;
+  height: 100%;
+  border-right: solid #a9a9a9 1px;
+}
+
+#schedule-detail-list {
+  height: 539px;
+  display: block;
+}
+
+.trip-box {
+  padding-bottom: 20px;
+}
+
+.inspot-add-box {
+  border-top: solid #a7a7a7 1px;
+  padding-top: 10px;
+  height: 49px;
+}
+
+.add-inspot-spot-btn {
+  width: 104px;
+  height: 30px;
+  background: #555555;
+  border: solid #3b3b3b 1px;
+  line-height: 30px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.add-inspot-trans-btn {
+  width: 104px;
+  height: 30px;
+  background: #ff9320;
+  border: solid #f7870f 1px;
+  line-height: 30px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.day-spot-item {
+  padding: 15px;
+  width: 100%;
+  cursor: move;
+  border-bottom: solid #a7a7a7 1px;
+  background: #fff;
+  position: relative;
+  display: flex;
+}
+
+.day-spot-item:hover {
+  background: #f7f7f7;
+}
+
+.item-ctrl-box {
+  position: absolute;
+  top: 55px;
+  right: 7px;
+  display: none;
+}
+
+.item-ctrl-box div {
+  margin-right: 3px;
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+.spot-order-box {
+  width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  background: #223b68;
+  line-height: 19px;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  z-index: 1;
+}
+
+.info-box {
+  padding-left: 10px;
+  width: 153px;
+}
+
+.day-spot-item .img-box {
+  width: 80px;
+  height: 65px;
+  position: relative;
+  cursor: pointer;
+}
+
+.info-title {
+  font-weight: 550;
+}
+
+.spot-distance-box {
+  line-height: 18px;
+  background: #fff;
+  border: solid #cacaca 1px;
+  font-size: 11px;
+  color: #808080;
+  position: absolute;
+  padding: 0px 5px;
+  margin-top: 70px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#right-full-box {
+z-index:3;
+  width: auto;
+  height: 100%;
+  border-right: solid #a9a9a9 1px;
+}
+
+.list-title-option-menu {
+  font-size: 12px;
+  color: #fff;
+  font-weight: normal;
+  cursor: pointer;
+  width: 76px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border: solid 1px #fff;
+  background: url(/res/img/workspace/w_arrow_down.png) no-repeat 62px 10px;
+}
+
+.list-search-box {
+  border-bottom: solid #dadada 1px;
+  padding-top: 10px;
+  background: #fff;
+  text-align: center;
+}
+
+#daytrip-search {
+  width: 300px;
+  height: 31px;
+  border: solid #c8c8ca 1px;
+  padding-left: 5px;
+  font-family: "nanum";
+  background-position: 300px 4px;
+  margin: 0 15px;
+}
+
+.list-category-box {
+  background: #f7f7f7;
+  height: 90px;
+  display: flex;
+  padding: 8px 22px;
+}
+
+.list-cat-item {
+  margin: 0 12px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid rgb(182, 181, 181);
+  width: 65px;
+  height: 65px;
+}
+
+.list-cat-item img {
+  width: 100%;
+  height: 100%;
+}
+
+#map-tag-select-box {
+  width: 318px;
+  height: 31px;
+  border: solid #c8c8ca 1px;
+  background: #fff url(/res/img/flight/drop_select_arrow_a.png) no-repeat 300px 12px;
+  line-height: 31px;
+  margin: 0 auto;
+  margin-top: 5px;
+  padding-left: 5px;
+  font-size: 13px;
+  color: #808080;
+  cursor: pointer;
+}
+
+.custom-radio {
+  border: 1px solid #8b8b8b;
+}
+
+.search-cat-icon {
+  width: 100%;
+  height: 100%;
+  font-size: 2.3em;
+}
+
+.list-category-wrapper {
+  background: #f7f7f7;
+  height: 150px;
+}
+
+.list-box {
+  border-top: 1px solid #dadada;
+  max-height: 100%;
+  overflow-y: scroll;
+  background: #fff;
+}
+
+.spot-to-inspot i {
+  font-size: 2.5em;
+}
+
+.add-icon {
+  width: 35px;
+  padding-top: 10px;
+}
+.add-icon:hover {
+  cursor: pointer;
+}
+
+.info-small {
+  margin-top: -3px;
+}
+
+.like-cnt-info {
+  font-size: 14px;
+}
+
+#on-city-close-btn, #on-city-open-btn{
+	opacity:0.8;
+	width: 40px;
+    height: 50px;
+    cursor: pointer;
+    z-index:3;
+    position:absolute;
+    outline: none;
+    border:none;
+    background:#373737;
+    color:#fff;
+}
+
+#on-city-close-btn:hover, #on-city-open-btn:hover{
+	opacity:0.9;
+}
+
+#on-city-close-btn{
+	left:315px;
+}
+
+#on-city-open-btn{
+	left:245px;
+	z-index:2;
 }
