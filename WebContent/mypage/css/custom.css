@@ -267,7 +267,6 @@ body {
 .my-main-side {
   background: #203341;
   height: 100%;
-  width: 230px;
 }
 
 .date-box {
@@ -275,16 +274,15 @@ body {
   background: #203341;
 }
 
-.date-box li {
+.date-box div {
   width: 100%;
   line-height: 50px;
   background: #203341;
   color: #fff;
   text-align: center;
   border-bottom: solid 1px #374854;
-  font-size: 12px;
+  font-size: 1em;
   cursor: pointer;
-  display: flex;
 }
 
 .plan-category {
@@ -303,23 +301,18 @@ body {
   font-size: 12px;
   cursor: pointer;
   display: flex;
-
-  padding-left: 35px;
   padding-top: 15px;
+  justify-content: center;
 }
 
 /* 중복 : 추후 js로 컨트롤할것 */
-.plan-category li.on {
+.plan-category li.on,
+.show-all-day.on{
   background: #1a7ad9;
-  border-bottom: solid 1px #1a7ad9;
 }
 
-.plan-category li:hover {
-  background: #1a7ad9;
-  border-bottom: solid 1px #1a7ad9;
-}
-
-.plan-category li:not(.on):hover {
+.plan-category li:not(.on):hover,
+.show-all-day:not(.on):hover {
   background: #164c88;
 }
 
@@ -336,18 +329,6 @@ body {
   cursor: pointer;
   font-weight: 530;
   padding: 10px;
-}
-
-.day-edit-start-btn {
-  margin-top: 18px;
-  margin-left: 10px;
-  background: url(/res/img/workspace/new/cat_set_icon.png) no-repeat;
-  padding-left: 18px;
-  line-height: 15px;
-}
-
-.full-date-info {
-  padding-left: 10px;
 }
 
 .cat-date-left-box {
@@ -379,12 +360,9 @@ body {
   width: 160px;
   background: rgb(32, 51, 65);
   color: rgb(255, 255, 255);
-  height: 50px;
-}
-
-.cat-add-box {
   padding-top: 15px;
 }
+
 
 .cat-add-box div {
   width: 124px;
@@ -398,7 +376,7 @@ body {
 }
 
 .title-box {
-  position:relative;
+  position: relative;
   width: 100%;
   height: 50px;
   background: #707070;
@@ -407,6 +385,7 @@ body {
   font-size: 15px;
   font-weight: bold;
   padding: 0px 10px;
+  border-bottom: #a1a1a1 1px solid;
 }
 
 /* depth1 */
@@ -418,8 +397,16 @@ body {
 }
 
 #schedule-detail-list {
-  height: 539px;
+  margin-bottom: 25px;
   display: block;
+}
+
+.schedule_detail_title_text {
+  width: 245px;
+  padding-left: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .trip-box {
@@ -461,7 +448,6 @@ body {
 .day-spot-item {
   padding: 15px;
   width: 100%;
-  cursor: move;
   border-bottom: solid #a7a7a7 1px;
   background: #fff;
   position: relative;
@@ -474,9 +460,11 @@ body {
 
 .item-ctrl-box {
   position: absolute;
-  top: 55px;
-  right: 7px;
-  display: none;
+  right: 12px;
+  opacity: 0.3;
+  width:15%;
+  cursor:pointer;
+  z-index:10;
 }
 
 .item-ctrl-box div {
@@ -522,20 +510,20 @@ body {
 }
 
 .spot-distance-box {
-  line-height: 18px;
+  line-height: 1.5em;
   background: #fff;
   border: solid #cacaca 1px;
-  font-size: 11px;
+  font-size: 0.8em;
   color: #808080;
   position: absolute;
   padding: 0px 5px;
   margin-top: 70px;
-  cursor: pointer;
   z-index: 1;
+  left:100px;
 }
 
 #right-full-box {
-z-index:3;
+  z-index: 3;
   width: auto;
   height: 100%;
   border-right: solid #a9a9a9 1px;
@@ -554,11 +542,21 @@ z-index:3;
   background: url(/res/img/workspace/w_arrow_down.png) no-repeat 62px 10px;
 }
 
-.list-search-box {
+.list-search-box,
+.list-search-box-small {
   border-bottom: solid #dadada 1px;
   padding-top: 10px;
   background: #fff;
   text-align: center;
+}
+
+.list-search-box-small {
+  border: 1px solid #dadada;
+  position: absolute;
+  top: 85px;
+  right: 15px;
+  display: none;
+  z-index: 3;
 }
 
 #daytrip-search {
@@ -635,8 +633,6 @@ z-index:3;
 .add-icon {
   width: 35px;
   padding-top: 10px;
-}
-.add-icon:hover {
   cursor: pointer;
 }
 
@@ -648,28 +644,113 @@ z-index:3;
   font-size: 14px;
 }
 
-#on-city-close-btn, #on-city-open-btn{
-	opacity:0.8;
-	width: 40px;
-    height: 50px;
-    cursor: pointer;
-    z-index:3;
-    position:absolute;
-    outline: none;
-    border:none;
-    background:#373737;
-    color:#fff;
+#on-city-close-btn,
+#on-city-open-btn {
+  opacity: 0.8;
+  width: 40px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 3;
+  position: absolute;
+  outline: none;
+  border: none;
+  background: #373737;
+  color: #fff;
 }
 
-#on-city-close-btn:hover, #on-city-open-btn:hover{
-	opacity:0.9;
+#on-city-close-btn:hover,
+#on-city-open-btn:hover {
+  opacity: 0.9;
 }
 
-#on-city-close-btn{
-	left:315px;
+#on-city-close-btn {
+  left: 315px;
 }
 
-#on-city-open-btn{
-	left:245px;
-	z-index:2;
+#on-city-open-btn {
+  left: 255px;
+  top: -50px;
+  z-index: 2;
 }
+
+.trip-detail-added {
+  display: none;
+}
+
+.toggle-on {
+  display: none;
+  border: none;
+  background: transparent;
+  width: 40px;
+}
+
+.toggle-on:focus {
+  outline: none;
+}
+
+.toggle-on h4 {
+  color: #ffffff;
+  opacity: 0.5;
+}
+
+.toggle-on h4:hover {
+  opacity: 1;
+}
+
+.btn-del {
+  width: 15px;
+}
+
+#trip-save-btn{
+	background:#1A7AD9;
+	border:none;
+}
+
+/* trip customizing media query*/
+@media (max-width: 1180px) {
+  .list-search-box-small {
+    display: block;
+  }
+  #right-full-box {
+    display: none !important;
+  }
+  #on-city-open-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 990px) {
+  .my-main-side {
+    display: none;
+  }
+  .schedule-detail-box {
+    display: block !important;
+  }
+  .trip-detail-added {
+    display: block;
+  }
+  .toggle-on {
+    display: block;
+  }
+}
+
+/* ipad 크기 */
+@media (max-width: 768px) {
+  .my-main-wrapper {
+    flex-direction: column;
+  }
+
+  #map {
+    order: 1;
+  }
+  .schedule-detail-box {
+    order: 2;
+    width: 100%;
+    height: 45%;
+  }
+
+  .list-search-box-small {
+    order: 3;
+  }
+}
+

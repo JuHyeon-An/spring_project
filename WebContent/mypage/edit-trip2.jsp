@@ -88,14 +88,11 @@
 
     <div class="my-main-wrapper">
       <div class="my-main-side">
-        <ul class="date-box">
-          <li>
-            <div class="full-date-info">05.6~05.13</div>
-            <div class="day-edit-start-btn" onclick="day_edit_start()">EDIT</div>
-          </li>
-        </ul>
-        <div class="show-all-day text-center">전체 일정 보기</div>
+        <div class="date-box">
+            <div><i class="far fa-calendar-alt"></i> 05.6 ~ 05.13</div>
+        </div>
         <ul class="plan-category">
+          <li class="show-all-day text-center">전체 일정 보기</li>
           <li
             data="1"
             data-date="05.06"
@@ -103,7 +100,6 @@
             data-f_ci="310"
             data-f_lat="37.56653500"
             data-f_lng="126.97796920"
-            class="on"
             original-title="서울"
           >
             <div class="cat-date-left-box">
@@ -213,27 +209,29 @@
         </ul>
         <div class="cat-add-box" style="padding: 20px 0 0 0;">
           <div onclick="add_plan_day()">DAY 추가</div>
+          <div id="trip-save-btn" class="mt-2">저장하기</div>
         </div>
       </div>
 
-      <!-- depth1 -->
-      <div class="schedule-detail-box">
+      <!----------------- depth1 -------------------------->
+      <div class="schedule-detail-box" style="display: none;">
+        <!--title-->
         <div class="title-box">
           <div id="schedule_detail_title" data-date="05-06" style="display: block;">
-            <div class="schedule_detail_title_text" style="width: 245px; padding-left: 10px; font-size: 15px;">
-              <div style="position:relative;">DAY1 <span style="color: #999999;">|</span> 05.06(수요일)
+            <div class="schedule_detail_title_text">
+              DAY1 <span style="color: #999999;"> | </span> 05.06(수요일)
+              <button type="button" class="toggle-on"><h4><i class="fas fa-caret-down"></i></h4></button>
+            </div>
+            <div style="position: relative;">
               <button type="button" id="on-city-open-btn">
-		<i class="fas fa-chevron-right"></i>
-		</button>
-              
-              </div>
-              <div class="day_reset_btn" onclick="del_plan_inspot_day_all()"></div>
-              <div class="day_next_btn" onclick="plan_day_next()"></div>
-              <div class="day_prev_btn" onclick="plan_day_prev()"></div>
-                      </div>
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="day_reset_btn" onclick="del_plan_inspot_day_all()"></div>
+            <div class="day_next_btn" onclick="plan_day_next()"></div>
+            <div class="day_prev_btn" onclick="plan_day_prev()"></div>
           </div>
         </div>
-        
 
         <!--//(s)스케쥴 디테일 리스트-->
         <div id="schedule-detail-list" class="connectedSortable ui-sortable">
@@ -248,18 +246,11 @@
             data-latlng="37.57903300,126.98640400"
             data-ci="310"
           >
-            <div class="item-ctrl-box" style="display: none;">
-              <div class="item-copy-plan" title="장소복사">
-                <img src="/res/img/workspace/new/item_more_icon_a.png" />
+             <div class="item-ctrl-box" style="display: none;">
+                <div class="btn-del" title="삭제">
+				<img class="add-icon" src="./custom-image/sign.png"></img>
+                </div>
               </div>
-
-              <div class="item-set-plan" title="메모&amp;예산">
-                <img src="/res/img/workspace/new/item_set_icon_a.png" />
-              </div>
-
-              <div class="btn-del" title="삭제"><img src="/res/img/workspace/new/item_del_icon_a.png" /></div>
-              <div class="clear"></div>
-            </div>
 
             <div class="spot-distance-box">0.88Km</div>
 
@@ -271,10 +262,6 @@
               <div class="info-title">북촌 한옥 마을</div>
               <div class="small info-small">유명한거리/지역</div>
             </div>
-          </div>
-
-          <div class="tip-box">
-            <!-- 이용방법 기재 -->
           </div>
 
           <div id="schedule-detail-list" class="connectedSortable ui-sortable">
@@ -289,17 +276,10 @@
               data-latlng="37.57903300,126.98640400"
               data-ci="310"
             >
-              <div class="item-ctrl-box" style="display: none;">
-                <div class="item-copy-plan" title="장소복사">
-                  <img src="/res/img/workspace/new/item_more_icon_a.png" />
+               <div class="item-ctrl-box" style="display: none;">
+                <div class="btn-del" title="삭제">
+				<img class="add-icon" src="./custom-image/sign.png"></img>
                 </div>
-
-                <div class="item-set-plan" title="메모&amp;예산">
-                  <img src="/res/img/workspace/new/item_set_icon_a.png" />
-                </div>
-
-                <div class="btn-del" title="삭제"><img src="/res/img/workspace/new/item_del_icon_a.png" /></div>
-                <div class="clear"></div>
               </div>
 
               <div class="spot-distance-box">3.14km</div>
@@ -314,29 +294,100 @@
               </div>
             </div>
 
-            <div class="tip-box">
-              <!-- 이용방법 기재 -->
-            </div>
           </div>
         </div>
 
-        <!--//(e)스케쥴 디테일 리스트-->
-        <div class="inspot-add-box">
-          <div class="inspot-set-box"></div>
+        <div class="trip-detail-added">
+          <div class="title-box">
+          <div id="schedule_detail_title" data-date="05-06" style="display: block;">
+            <div class="schedule_detail_title_text">
+              DAY2 <span style="color: #999999;"> | </span> 05.07(목요일)
+              <button type="button" class="toggle-on"><h4><i class="fas fa-caret-down"></i></h4></button>
+            </div>
+            <div style="position: relative;">
+              <button type="button" id="on-city-open-btn">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+            <div class="day_reset_btn" onclick="del_plan_inspot_day_all()"></div>
+            <div class="day_next_btn" onclick="plan_day_next()"></div>
+            <div class="day_prev_btn" onclick="plan_day_prev()"></div>
+          </div>
+        </div>
+
+          <div id="schedule-detail-list" class="connectedSortable ui-sortable">
+            <div
+              class="day-spot-item"
+              data="1"
+              data-set_day="1"
+              data-rel_srl="6725"
+              data-pl_type="0"
+              data-no="0"
+              data-pl_cat="301"
+              data-latlng="37.57903300,126.98640400"
+              data-ci="310"
+            >
+               <div class="item-ctrl-box" style="display: none;">
+                <div class="btn-del" title="삭제">
+				<img class="add-icon" src="./custom-image/sign.png"></img>
+                </div>
+              </div>
+
+              <div class="spot-distance-box">0.88Km</div>
+
+              <div class="img-box">
+                <div class="spot-order-box">1</div>
+                <img src="http://img.earthtory.com/img/place_img/310/6725_0_et.jpg" />
+              </div>
+              <div class="info-box">
+                <div class="info-title">북촌 한옥 마을</div>
+                <div class="small info-small">유명한거리/지역</div>
+              </div>
+            </div>
+
+            <div
+              class="day-spot-item"
+              data="1"
+              data-set_day="1"
+              data-rel_srl="6725"
+              data-pl_type="0"
+              data-no="0"
+              data-pl_cat="301"
+              data-latlng="37.57903300,126.98640400"
+              data-ci="310"
+            >
+               <div class="item-ctrl-box" style="display: none;">
+                <div class="btn-del" title="삭제">
+				<img class="add-icon" src="./custom-image/sign.png"></img>
+                </div>
+              </div>
+
+              <div class="spot-distance-box">3.14km</div>
+
+              <div class="img-box">
+                <div class="spot-order-box">2</div>
+                <img src="http://img.earthtory.com/img/place_img/310/6638_0_et.jpg" />
+              </div>
+              <div class="info-box">
+                <div class="info-title">경복궁</div>
+                <div class="small info-small">랜드마크, 성/궁궐</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- end of depth1 -->
 
       <!-- depth 2 -->
-      <div id="right-full-box">
+      <div id="right-full-box" style="display: none;">
         <div class="title-box" style="background: #1a7ad9;">
           <span>서울</span>
           <span class="list-title-option-menu pull-right mt-10" data-is_open="off"> 도시변경 🔽 </span>
-		<button type="button" id="on-city-close-btn">
-		<i class="fas fa-chevron-left"></i>
-		</button>
+          <button type="button" id="on-city-close-btn">
+            <i class="fas fa-chevron-left"></i>
+          </button>
         </div>
-		
+
         <div class="list-search-full-wrap">
           <div class="list-search-box">
             <div class="input-group mb-2" style="padding: 0 20px;">
@@ -472,6 +523,36 @@
           </div>
         </div>
       </div>
+      <!-- right full wrap -->
+
+      <div class="list-search-box-small">
+        <div class="input-group mb-2" style="padding: 0 20px;">
+          <input type="text" class="form-control" placeholder="장소검색" />
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" style="border: 1px solid #ced4da;" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-check-inline" style="margin-bottom: 7px;">
+          <div class="d-flex" style="padding: 0 15px;">
+            <div class="primary-radio">
+              <input type="radio" id="primary-radio" />
+              <label class="custom-radio" for="primary-radio"></label>
+            </div>
+            <span class="radio-trip-option">&nbsp;도시 내 검색&nbsp;</span>
+          </div>
+          <div class="d-flex" style="padding: 0 15px;">
+            <div class="primary-radio">
+              <input type="radio" id="primary-radio" checked />
+              <label class="custom-radio" for="primary-radio"></label>
+            </div>
+            <span class="radio-trip-option">&nbsp;전체 검색&nbsp;</span>
+          </div>
+        </div>
+      </div>
+
       <div id="map" class="my-main-map" style="width: 100%; height: 100%;"></div>
     </div>
     <!-- 전체 wrapper -->
