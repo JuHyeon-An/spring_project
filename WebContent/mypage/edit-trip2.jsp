@@ -34,12 +34,6 @@
     <link rel="stylesheet" href="./css/custom.css" />
     <title>Insert title here</title>
     <style>
-      html,
-      body {
-        margin: 0px;
-        height: 100%;
-        overflow: hidden;
-      }
     </style>
   </head>
 
@@ -90,9 +84,9 @@
       <div class="my-main-side">
         <div class="date-box">
             <div><i class="far fa-calendar-alt"></i> 05.6 ~ 05.13</div>
+          <div class="show-all-day text-center">전체 일정 보기</div>
         </div>
         <ul class="plan-category">
-          <li class="show-all-day text-center">전체 일정 보기</li>
           <li
             data="1"
             data-date="05.06"
@@ -207,7 +201,7 @@
             </div>
           </li>
         </ul>
-        <div class="cat-add-box" style="padding: 20px 0 0 0;">
+        <div class="cat-add-box">
           <div onclick="add_plan_day()">DAY 추가</div>
           <div id="trip-save-btn" class="mt-2">저장하기</div>
         </div>

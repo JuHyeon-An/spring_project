@@ -16,17 +16,16 @@ function init() {
     $("#right-full-box").toggle("fade", { direction: "left" });
   });
 
-  $(".plan-category li")
-    .not(".show-all-day")
-    .click(function () {
+  $(".plan-category li").click(function () {
       $(".schedule-detail-box").show("fade", { direction: "left" });
       $(".plan-category li").not(this).removeClass("on");
+      $(".show-all-day").removeClass("on");
       $(this).addClass("on");
     });
 
   $(".show-all-day").click(function () {
-    $(".schedule-detail-box, #right-full-box").css("display", "none");
-    $(".plan-category li").not(this).removeClass("on");
+    $(".schedule-detail-box, #right-full-box").hide();
+    $(".plan-category li").removeClass("on");
     $(this).addClass("on");
   });
 
@@ -43,6 +42,5 @@ function init() {
 init();
 
 function add_plan_day(){
-	alert("헛");
 	$(".plan-category li:last-child").clone().appendTo(".plan-category");
 }
